@@ -1,5 +1,5 @@
 {
-    "name": "friendsofsymfony/comment-bundle",
+    "name": "cosmow/comment-bundle",
     "type": "symfony-bundle",
     "description": "This Bundle provides threaded comment functionality for Symfony applications",
     "keywords": ["comment", "threads", "forum"],
@@ -26,19 +26,19 @@
         "php": "^7.4 || ^8.0",
         "friendsofsymfony/rest-bundle": "~2.8",
         "jms/serializer-bundle": "~2.0|~3.0",
-        "symfony/framework-bundle": "~3.4|^4.3",
-        "symfony/asset": "~3.4|^4.3",
-        "symfony/dependency-injection": "~3.4|^4.3",
-        "symfony/routing": "~3.4|^4.3",
-        "symfony/security-bundle": "~3.4|^4.3",
-        "symfony/yaml": "~3.4|^4.3",
-        "symfony/form": "~3.4|^4.3",
-        "symfony/validator": "~3.4|^4.3",
-        "symfony/twig-bundle": "~3.4|^4.3",
-        "symfony/twig-bridge": "~3.4|^4.3",
-        "twig/twig": "~2.0|~3.0",
-        "phpoption/phpoption": "~1.1",
-        "doctrine/annotations": "~1.0"
+        "symfony/framework-bundle": "^6.4",
+        "symfony/asset": "^6.4",
+        "symfony/dependency-injection": "^6.4",
+        "symfony/routing": "^6.4",
+        "symfony/security-bundle": "^6.4",
+        "symfony/yaml": "^6.4",
+        "symfony/form": "^6.4",
+        "symfony/validator": "^6.4",
+        "symfony/twig-bundle": "^6.4",
+        "symfony/twig-bridge": "^6.4",
+        "twig/twig": "^3.0",
+        "phpoption/phpoption": "^1.1",
+        "doctrine/annotations": "^1.0"
     },
     "suggest": {
         "friendsofsymfony/user-bundle": "Allows for user integration.",
@@ -47,21 +47,21 @@
         "symfony/assetic-bundle": "Integrates Assetic into Symfony."
     },
     "require-dev": {
-        "symfony/browser-kit": "~3.4|^4.3",
-        "symfony/dom-crawler": "~3.4|^4.3",
-        "symfony/css-selector": "~3.4|^4.3",
-        "doctrine/orm": "~2.3",
-        "doctrine/doctrine-bundle": "^1.6|^2.0",
+        "symfony/browser-kit": "^6.4",
+        "symfony/dom-crawler": "^6.4",
+        "symfony/css-selector": "^6.4",
+        "doctrine/orm": "^2.9",
+        "doctrine/doctrine-bundle": "^2.7|^3.0",
         "friendsofsymfony/user-bundle": "~2.0",
         "ornicar/akismet-bundle": "dev-master",
-        "symfony/expression-language": "~3.4|^4.3",
-        "symfony/phpunit-bridge": "~3.4|^4.3",
-        "phpunit/phpunit": "^6.5",
+        "symfony/expression-language": "^6.4",
+        "symfony/phpunit-bridge": "^6.4",
+        "phpunit/phpunit": "^9.0",
         "friendsofphp/php-cs-fixer": "^2.2"
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "4.0.x-dev"
+            "dev-master": "6.4.x-dev"
         }
     },
     "autoload": {
