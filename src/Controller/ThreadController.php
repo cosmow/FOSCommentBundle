@@ -24,7 +24,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 /**
  * Restful controller for the Threads.
  *
- * @author Alexander <iam.asm89@gmail.com>
+ * @author Alexander <iam.asm89@gmail.com> 
  */
 class ThreadController extends AbstractController
 {
