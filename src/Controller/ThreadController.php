@@ -20,16 +20,28 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Restful controller for the Threads.
  *
  * @author Alexander <iam.asm89@gmail.com> 
  */
+#[Route('/threadsComments', name: 'fos_comment_')]
 class ThreadController extends AbstractController
 {
     const VIEW_FLAT = 'flat';
     const VIEW_TREE = 'tree';
+
+    /**
+     * Obtiene el servicio del manejador de vistas.
+     *
+     * @return \FOS\RestBundle\View\ViewHandlerInterface
+     */
+    protected function getViewHandler()
+    {
+        return $this->container->get('fos_rest.view_handler');
+    }
 
     /**
      * Presents the form to use to create a new Thread.
@@ -200,6 +212,7 @@ class ThreadController extends AbstractController
      *
      * @return View
      */
+    #[Route('/threads/comments/votes/new/{id}/{commentId}', name: 'new_thread_comment_votes', methods: ['GET'])]
     public function newThreadCommentsAction(Request $request, $id)
     {
         $thread = $this->container->get('fos_comment.manager.thread')->findThreadById($id);
@@ -238,6 +251,7 @@ class ThreadController extends AbstractController
      *
      * @return View
      */
+    #[Route('/thread/comment/{id}/{commentId}', name: 'get_thread_comment', methods: ['GET'])]
     public function getThreadCommentAction($id, $commentId)
     {
         $thread = $this->container->get('fos_comment.manager.thread')->findThreadById($id);
@@ -413,6 +427,7 @@ class ThreadController extends AbstractController
      *
      * @todo Add support page/pagesize/sorting/tree-depth parameters
      */
+    #[Route('/thread/comments/{id}', name: 'fos_comment_get_thread_comments', methods: ['GET'])]
     public function getThreadCommentsAction(Request $request, $id)
     {
         $displayDepth = $request->query->get('displayDepth');
@@ -545,6 +560,7 @@ class ThreadController extends AbstractController
      *
      * @return View
      */
+    #[Route('/thread/comment/votes/{id}/{commentId}', name: 'get_thread_comment_votes', methods: ['GET'])]
     public function getThreadCommentVotesAction($id, $commentId)
     {
         $thread = $this->container->get('fos_comment.manager.thread')->findThreadById($id);
@@ -902,11 +918,5 @@ class ThreadController extends AbstractController
         }
     }
 
-    /**
-     * @return \FOS\RestBundle\View\ViewHandler
-     */
-    private function getViewHandler()
-    {
-        return $this->container->get('fos_rest.view_handler');
-    }
+
 }

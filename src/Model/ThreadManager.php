@@ -35,7 +35,8 @@ abstract class ThreadManager implements ThreadManagerInterface
      */
     public function __construct(EventDispatcherInterface $dispatcher)
     {
-        $this->dispatcher = class_exists(LegacyEventDispatcherProxy::class) ? LegacyEventDispatcherProxy::decorate($dispatcher) : $dispatcher;
+        // En Symfony 6, utilizar el dispatcher directamente sin LegacyEventDispatcherProxy
+        $this->dispatcher = $dispatcher;
     }
 
     /**
@@ -92,14 +93,8 @@ abstract class ThreadManager implements ThreadManagerInterface
      */
     protected function dispatch(Event $event, $eventName)
     {
-        // LegacyEventDispatcherProxy exists in Symfony >= 4.3
-        if (class_exists(LegacyEventDispatcherProxy::class)) {
-            // New Symfony 4.3 EventDispatcher signature
-            $this->dispatcher->dispatch($event, $eventName);
-        } else {
-            // Old EventDispatcher signature
-            $this->dispatcher->dispatch($eventName, $event);
-        }
+        // En Symfony 6, siempre usar la nueva signatura: dispatch(object $event, string $eventName = null)
+        $this->dispatcher->dispatch($event, $eventName);
     }
 
     /**
